@@ -239,14 +239,18 @@ ORDER BY target_entity_type, target_entity_id
     $pcpContactId  = CRM_Core_DAO::getFieldValue('CRM_PCP_DAO_PCP', $pcpId, 'contact_id');
     $contactTypes  = CRM_Contact_BAO_Contact::getContactTypes( $pcpContactId );
     $query         = "
-      SELECT    SUM(cc.total_amount) as total
+      SELECT    SUM(li.line_total) as total
       FROM      civicrm_pcp pcp
       LEFT JOIN civicrm_contribution_soft cs ON ( pcp.id = cs.pcp_id )
       LEFT JOIN civicrm_contribution cc      ON ( cs.contribution_id = cc.id)
+      LEFT JOIN civicrm_line_item li         ON ( li.contribution_id = cc.id )
       LEFT JOIN civicrm_contact sco          ON ( cs.contact_id = sco.id)
-      WHERE     pcp.id = %1 
-      AND       cc.contribution_status_id =1 
+      WHERE     pcp.id = %1
+      AND       cc.contribution_status_id =1
       AND       cc.is_test = 0";
+
+    // [SV] exclure les frais jikko
+    $query .= "AND (li.financial_type_id != 5)";
 
     // do not count team soft credit for team member pages, as it results in
     // doubling the amount. TODO: there should be a better way to handle
@@ -974,7 +978,7 @@ INNER JOIN civicrm_uf_group ufgroup
    * @access public
    * @static
    */
-  
+
   static function &create(&$params, $pcpBlock = TRUE) {
     $pcp    = NULL;
     $isEdit = TRUE;
@@ -985,9 +989,9 @@ INNER JOIN civicrm_uf_group ufgroup
       CRM_Utils_Hook::pre('create', 'PCP', NULL, $params);
       $isEdit = FALSE;
     }
-    
+
     $pcp = self::add($params, $pcpBlock);
-    
+
     if ($isEdit) {
       CRM_Utils_Hook::post('edit', 'PCP', $pcp->id, $pcp);
     }

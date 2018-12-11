@@ -1,7 +1,20 @@
 <!-- header -->
 <div class="crm-pcp-manage">
 
-  <div class="pcp-panel">
+  <div class="pcp-messages">
+  {if !empty($pcpStatus)}
+  {foreach from=$pcpStatus item=pstatus}
+    <div class="{$pstatus.type} pcp-message">
+      <h3>{ts}{$pstatus.title}{/ts}</h3>
+      <p>{ts}{$pstatus.text}{/ts}</p>
+    </div>
+  {/foreach}
+  {/if}
+  </div>
+
+<div class="pcp-public-page"><p>{ts 1=$publicUrl}If you want to see your final page, please click <a href="%1">View my public page</a>{/ts}</p></div>
+
+<div class="pcp-panel">
     <!-- profile Image -->
     <div class="avatar-title-block">
         <div class="avatar">
@@ -32,16 +45,6 @@
   </div>
   <!-- End header-->
 
-  <div class="pcp-messages">
-  {if !empty($pcpStatus)}
-  {foreach from=$pcpStatus item=pstatus}
-    <div class="{$pstatus.type} pcp-message">
-      <h3>{ts}{$pstatus.title}{/ts}</h3>
-      <p>{ts}{$pstatus.text}{/ts}</p>
-    </div>
-  {/foreach}
-  {/if}
-  </div>
 
   <div class="pcp-body">
     <div class="totaliser-giveto-block">
@@ -123,12 +126,13 @@
             <a href="{$pcpinfo.donate_url}"><span id="donate_link_text" data-placeholder="name of he button">{ts}Donate{/ts}</span></a>
           </div>
         </div>
-        {if !empty($donationInfo)}
+        {*if !empty($donationInfo)}
           <div class="rank">This Page is <strong>{$rankInfo.rank}<small>{$rankInfo.suffix}</small></strong> out of the <strong>{$rankInfo.pageCount}</strong> fundraisers taking part in event.</div>
-        {/if}
+        {/if*}
         {foreach from=$donationInfo item=donations}
           <div class="top-donations">
-            {$donations.nickname} has donated <strong>{$donations.total_amount}</strong>
+            {$donations.nickname} has donated <strong>{$donations.total_amount}</strong><br>
+            {$donations.personal_note}
           </div>
         {/foreach}
       </div>
@@ -346,7 +350,8 @@ CRM.$(function($) {
 
   // circular progress bar
   var circleVar = {/literal}{$pcpinfo.percentage};{literal}
-  $('.circle').circleProgress({
+
+  /*$('.circle').circleProgress({
     value: circleVar/100,
     size: 130,
     thickness: 15,
@@ -360,6 +365,17 @@ CRM.$(function($) {
     } else {
       $('#pcp-progress').find('strong').html(parseInt(circleVar) + '<i>%</i>');
     }
+  });*/
+  $('.circle').jQMeter({
+    goal:'100',
+    raised:'10',
+    meterOrientation:'vertical',
+    width:'35px',
+    height:'200px',
+    bgColor:'#eee',
+    barColor:'#e0001a',
+    displayTotal:false,
+    animationSpeed:500
   });
 
   $(".crm-pcp-alert-approve-request").on('click', function(ev) {

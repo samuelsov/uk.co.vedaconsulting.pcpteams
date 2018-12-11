@@ -13,11 +13,19 @@
     <page_callback>CRM_Pcpteams_Page_Dashboard</page_callback>
     <title>My Dashboard</title>
     <access_arguments>edit own pcpteams pages</access_arguments>
+    <is_public>true</is_public>
   </item>
   <item>
     <path>civicrm/pcp/manage</path>
     <page_callback>CRM_Pcpteams_Page_Manage</page_callback>
     <title>Update Personal Campaign Page</title>
+    <access_callback>1</access_callback>
+    <is_public>true</is_public>
+  </item>
+  <item>
+    <path>civicrm/pcp/page</path>
+    <page_callback>CRM_Pcpteams_Page_View</page_callback>
+    <title>View Personal Campaign Page</title>
     <access_callback>1</access_callback>
     <is_public>true</is_public>
   </item>
@@ -38,5 +46,5 @@
     <page_callback>CRM_Pcpteams_Form_Setting</page_callback>
     <title>Setting</title>
     <access_arguments>administer CiviCRM</access_arguments>
-  </item>  
+  </item>
 </menu>
