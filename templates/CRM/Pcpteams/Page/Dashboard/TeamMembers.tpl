@@ -6,10 +6,10 @@
 
       <table class="selector">
         <tr class="columnheader">
-          <th>{ts}Team{/ts}</th>
-          <th>{ts}Member{/ts}</th>
-          <th>{ts}Admin(Yes/No){/ts}</th>
-          <th>{ts}Action{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Team{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Member{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Admin(Yes/No){/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Action{/ts}</th>
         </tr>
 
         {foreach from=$teamMemberInfo item=row}
@@ -26,7 +26,7 @@
   {else}
     <div class="messages status no-popup">
       <div class="icon inform-icon"></div>
-      {ts}You have no new team membership requests yet.{/ts}
+      {ts domain="uk.co.vedaconsulting.pcpteams"}You have no new team membership requests yet.{/ts}
     </div>
   {/if}
 

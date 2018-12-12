@@ -6,16 +6,16 @@
 
       <table class="selector">
         <tr class="columnheader">
-          <th>{ts}Pcp Title{/ts}</th>
-          <th>{ts}Support of{/ts}</th>
-          <th>{ts}Goal{/ts}</th>
-          <th>{ts}Amount Raised{/ts}</th>
-          <th>{ts}Action{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Pcp Title{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Support of{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Goal{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Amount Raised{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Action{/ts}</th>
         </tr>
 
         {foreach from=$pcpInactiveInfo item=row}
         <tr class="{cycle values="odd-row,even-row"} {$row.class}">
-              <td class="bold"><a href="{crmURL p='civicrm/pcp/info' q="reset=1&id=`$row.pcpId`" a=1}" title="{ts}Preview your Personal Campaign Page{/ts}">{$row.title}</a></td>
+              <td class="bold"><a href="{crmURL p='civicrm/pcp/info' q="reset=1&id=`$row.pcpId`" a=1}" title="{ts domain="uk.co.vedaconsulting.pcpteams"}Preview your Personal Campaign Page{/ts}">{$row.title}</a></td>
               <td>{$row.page_title}</td>
               <td align="right">{$row.goal_amount|crmMoney}</td>
               <td align="right">{$row.amount_raised|crmMoney}</td>
@@ -28,7 +28,7 @@
   {else}
     <div class="messages status no-popup">
       <div class="icon inform-icon"></div>
-      {ts}You have no archived fundraising pages.{/ts}
+      {ts domain="uk.co.vedaconsulting.pcpteams"}You have no archived fundraising pages.{/ts}
     </div>
   {/if}
 

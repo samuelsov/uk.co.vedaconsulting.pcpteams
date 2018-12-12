@@ -6,10 +6,10 @@
 
       <table class="selector">
         <tr class="columnheader">
-          <th>{ts}Name{/ts}</th>
-          <th>{ts}PCP Title{/ts}</th>
-          <th>{ts}Support of{/ts}</th>
-          <th>{ts}Status{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Name{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}PCP Title{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Support of{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Status{/ts}</th>
         </tr>
 
         {foreach from=$teamPendingInfo item=row}
@@ -19,7 +19,7 @@
               {$row.teamPcpTitle}
               </td>
               <td>{$row.pageTitle}</td>
-              <td>{ts}Pending Approval{/ts}</td>
+              <td>{ts domain="uk.co.vedaconsulting.pcpteams"}Pending Approval{/ts}</td>
         </tr>
         {/foreach}
       </table>
@@ -28,7 +28,7 @@
   {else}
     <div class="messages status no-popup">
       <div class="icon inform-icon"></div>
-      {ts}You have no pending membership requests.{/ts}
+      {ts domain="uk.co.vedaconsulting.pcpteams"}You have no pending membership requests.{/ts}
     </div>
   {/if}
 

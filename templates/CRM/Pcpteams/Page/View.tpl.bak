@@ -38,10 +38,12 @@
       <div class="pcp-information">
         <h2 id="pcp_title" class="title {if $is_edit_page}crm-pcp-inline-text-edit{/if}" data-placeholder="Page Title">{$pcpinfo.title}</h2>
       <!-- BIO section -->
-      {*
+      {if $pcpinfo.intro_text}
         <div id="pcp_intro_text" class="intro-text" data-placeholder="Intro Text">{$pcpinfo.intro_text}</div>
-      *}
-      <div id="pcp_page_text" class="page-text" data-placeholder="Page Description">{$pcpinfo.page_text}</div>
+      {/if}
+      {if $pcpinfo.page_text}
+        <div id="pcp_page_text" class="page-text" data-placeholder="Page Description">{$pcpinfo.page_text}</div>
+      {/if}
       <!-- BIO section ends -->
       </div><!--pcp-information-->
 

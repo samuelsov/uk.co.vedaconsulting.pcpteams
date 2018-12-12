@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <extension key="uk.co.vedaconsulting.pcpteams" type="module">
   <file>pcpteams</file>
-  <name>PCP Team Management</name>
+  <name>PCP Team Management (PATCHED)</name>
   <description>PCP Team Management with dashboard and mulitple softcredits</description>
   <license>AGPL-3.0</license>
   <maintainer>

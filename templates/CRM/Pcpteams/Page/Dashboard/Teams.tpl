@@ -6,13 +6,13 @@
 
       <table class="selector" id="team_info">
         <tr class="columnheader">
-          <th>{ts}Name{/ts}</th>
-          <th>{ts}Team PCP Title{/ts}</th>
-          <th>{ts}Support of{/ts}</th>
-          <th>{ts}Goal{/ts}</th>
-          <th>{ts}Amount Raised{/ts}</th>
-          <th>{ts}My Role{/ts}</th>
-          <th>{ts}Action{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Name{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Team PCP Title{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Support of{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Goal{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Amount Raised{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}My Role{/ts}</th>
+          <th>{ts domain="uk.co.vedaconsulting.pcpteams"}Action{/ts}</th>
         </tr>
 
         {foreach from=$teamInfo item=row key=entityId}
@@ -40,7 +40,7 @@
   {else}
     <div class="messages status no-popup">
       <div class="icon inform-icon"></div>
-      {ts}You are not a member of a team yet.{/ts}
+      {ts domain="uk.co.vedaconsulting.pcpteams"}You are not a member of a team yet.{/ts}
     </div>
   {/if}
 
